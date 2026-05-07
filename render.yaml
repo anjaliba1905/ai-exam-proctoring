@@ -27,4 +27,4 @@ services:
         value: production
 
     healthCheckPath: /health
-    autoDeploy: trues
+    autoDeploy: true
