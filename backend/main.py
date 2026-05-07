@@ -47,7 +47,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 log = logging.getLogger("proctoring")
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DB_PATH         = os.environ.get("DB_PATH", "/app/data/violations.db")
+DB_PATH         = os.environ.get("DB_PATH", "/tmp/violations.db")
 JWT_SECRET      = os.environ.get("JWT_SECRET", secrets.token_hex(32))
 ADMIN_PASSWORD  = os.environ.get("ADMIN_PASSWORD", "")
 TOKEN_TTL_H     = int(os.environ.get("TOKEN_TTL_HOURS", "4"))
