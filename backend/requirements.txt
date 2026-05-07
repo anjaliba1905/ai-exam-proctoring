@@ -1,0 +1,15 @@
+# Backend requirements — AI Exam Proctoring API
+# No AI/CV libs here — all inference runs on the student device.
+
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+python-multipart==0.0.9
+
+# Security
+python-jose[cryptography]==3.3.0    # real JWT signing (HS256)
+bcrypt==4.1.3                        # proper password hashing
+slowapi==0.1.9                       # rate limiting
+
+# Extras
+python-dotenv==1.0.1                 # load .env in local dev
