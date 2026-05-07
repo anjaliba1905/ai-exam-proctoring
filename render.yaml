@@ -1,36 +1,21 @@
-# render.yaml — Render.com Blueprint (commit to ROOT of repo)
-# Dashboard → New → Blueprint → connect GitHub repo → done.
-
 services:
   - type: web
     name: ai-exam-proctoring-api
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
-    plan: free                    # upgrade to "starter" ($7/mo) to remove sleep
-    region: oregon                # change to closest region for your students
-
-    # Persistent disk — SQLite survives deploys and restarts
-    disk:
-      name: proctoring-db
-      mountPath: /app/data
-      sizeGB: 1
+    plan: free
+    region: oregon
 
     envVars:
-      # Render auto-generates a secure random JWT_SECRET
       - key: JWT_SECRET
         generateValue: true
 
-      # Set ADMIN_PASSWORD manually in Render Dashboard → Environment
-      # Never commit the real value here!
       - key: ADMIN_PASSWORD
         sync: false
 
-      # Lock CORS to your actual deployment URL once you know it.
-      # E.g.: https://ai-exam-proctoring-api.onrender.com
-      # Use comma-separated for multiple: https://app1.com,https://app2.com
       - key: ALLOWED_ORIGINS
-        value: "*"                # CHANGE THIS after first deploy
+        value: "*"
 
       - key: DB_PATH
         value: /tmp/violations.db
@@ -42,4 +27,4 @@ services:
         value: production
 
     healthCheckPath: /health
-    autoDeploy: true              # redeploy on every push to main
+    autoDeploy: trues
